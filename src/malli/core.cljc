@@ -725,6 +725,7 @@
   (reify Schema
     (-name [_] ::map-key)
     (-form [_] ::map-key)
+    (-properties [_])
     (-transformer [this transformer context] (-value-transformer transformer this context))))
 
 ;;

@@ -71,6 +71,7 @@
 (defmethod -generator :map-of [schema opts] (-map-of-gen schema opts))
 (defmethod -generator :vector [schema _] (-coll-gen schema identity))
 (defmethod -generator :list [schema _] (-coll-gen schema (partial apply list)))
+(defmethod -generator :sequential [schema _] (-coll-gen schema identity))
 (defmethod -generator :set [schema _] (-coll-distict-gen schema set))
 (defmethod -generator :enum [schema _] (gen/elements (m/childs schema)))
 (defmethod -generator :maybe [schema opts] (gen/one-of [(gen/return nil) (-> schema m/childs first (generator opts))]))

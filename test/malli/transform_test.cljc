@@ -90,6 +90,7 @@
     (is (= #{"1" 2 "3"} (m/transform [:set [:enum 1 2]] ["1" 2 "3"] transform/string-transformer)))
     (is (= #{"1" 2 "3"} (m/transform [:set int?] ["1" 2 "3"] transform/json-transformer)))
     (is (= [:1 2 :3] (m/transform [:vector keyword?] ["1" 2 "3"] transform/string-transformer)))
+    (is (= [:1 2 :3] (m/transform [:sequential keyword?] ["1" 2 "3"] transform/string-transformer)))
     (is (= '(:1 2 :3) (m/transform [:list keyword?] '("1" 2 "3") transform/string-transformer)))
     (is (= '(:1 2 :3) (m/transform [:list keyword?] (seq '("1" 2 "3")) transform/string-transformer)))
     (is (= '(:1 2 :3) (m/transform [:list keyword?] (lazy-seq '("1" 2 "3")) transform/string-transformer)))
